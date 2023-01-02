@@ -1,14 +1,15 @@
-public class Gerente extends Funcionario{
+package bit;
 
+public class Gerente extends Funcionario{
 
     private int senha;
 
     public Gerente() {
     }
 
-//    public double getBonificacao() {
-//        return  + 500.00;
-//    }
+    public double getBonificacao() {
+        return super.getBonificacao() + super.getSalario();
+    }
 
     public boolean autentica(int senha) {
         if (this.senha == senha) {
