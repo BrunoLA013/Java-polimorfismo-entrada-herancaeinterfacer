@@ -1,4 +1,4 @@
-public class Conta {
+public abstract class Conta {
     private float saldo;
     private int agencia;
     private int numero;

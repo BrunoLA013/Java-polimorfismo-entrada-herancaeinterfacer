@@ -1,20 +1,13 @@
 package bit;
 
-public class Gerente extends Funcionario implements Autenticavel{
+public class Cliente implements Autenticavel {
 
     private int senha;
-
-    public Gerente() {
-    }
-
-    public double getBonificacao() {
-        System.out.println("bonificação Gerente");
-        return super.getSalario();
-    }
 
     @Override
     public void setSenha(int senha) {
         this.senha = senha;
+
     }
 
     @Override
