@@ -15,28 +15,21 @@ public abstract class Conta {
         this.numero = numero;
     }
 
-    public boolean sacar(float valor) {
-        if (this.saldo >= valor) {
-            this.saldo = this.saldo - valor;
-         //   System.out.println(this.titular + ", Saque realizado com sucesso, seu sldo atual é de R$" + this.saldo);
-            return true;
-        } else {
-          //  System.out.println(this.titular + ",Valor insufuciente para sacar, seu saldo é de R$" + this.saldo);
-            return false;
+    public void sacar(float valor) throws SaldoInsuficienteException {
+
+        if (this.saldo < valor) {
+            throw new SaldoInsuficienteException("Saldo: " + this.saldo + ", Valor: " + valor);
         }
+        this.saldo -= valor;
     }
 
     public void deposita(float depositar) {
         this.saldo = this.saldo + depositar;
     }
 
-    public boolean tranfere(float valor, Conta destino) {
-        if (this.sacar(valor)) {
+    public void tranfere(float valor, Conta destino) throws SaldoInsuficienteException {
+        this.sacar(valor);
             destino.deposita(valor);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     @Override
